@@ -14,6 +14,10 @@ const mainContainer = document.querySelector(".container-main");
 const formContainer = document.querySelector(".container-new-post");
 const cardsContainer = document.querySelector(".cards-container");
 
+
+const library = new Library();
+renderLibrary();
+
 Array.from(hamburgerMenuButtons).forEach(element => {
     element.onclick = function() {
         toggleMenu();
@@ -26,16 +30,13 @@ Array.from(hamburgerMenuButtons).forEach(element => {
 
 Array.from(newPostButtons).forEach(element => {
     element.onclick = function () {
-        handleNewPost();
+        openNewBookForm();
     }
 })
 
 cancelPostButton.onclick = function () {
-    if (!mainContainer.classList.contains("hide"))
-        return;
-
-    mainContainer.classList.toggle("hide");
-    formContainer.classList.toggle("hide");
+    closeNewBookForm();
+    
     newTitle.value = "";
     newDescription.value = "";
 
@@ -43,26 +44,62 @@ cancelPostButton.onclick = function () {
 
 formContainer.addEventListener("submit", function (e) {
     e.preventDefault();
-    const card = newCard(newTitle.value, newDescription.value);
-    cardsContainer.append(card);
+    insertNewBook();
+
+    closeNewBookForm();
+})
+
+cardsContainer.onclick = function(e) {
+    const trashButton = e.target.closest(".trash-button");
+    const readButton = e.target.closest(".read-button");
+    
+    if (trashButton == null && readButton == null)
+        return;
+
+    const card = e.target.closest(".card");
+    const bookId = Number(card.dataset.id.split("-")[1]);
+
+    if (trashButton != null) {
+        library.deleteBookAtId(bookId);
+        card.remove();
+    }
+
+    if (readButton != null) {
+        const read = card.querySelector(".read-button");
+        library.getBookAtID(bookId).setRead(true);
+        read.classList.toggle("book-read");
+        card.classList.toggle("card-read");
+    }
+
+    console.log(library);
+}
+
+
+function insertNewBook() {
+    const book = new Book(newTitle.value, newDescription.value);
+    library.addBook(book);    
+    cardsContainer.append(book.renderCard());
+    
+
+    console.log(library);
+}
+
+function closeNewBookForm() {
     mainContainer.classList.toggle("hide");
     formContainer.classList.toggle("hide");
 
     newTitle.value = "";
     newDescription.value = "";
+    handleScreenChange(mediaQuery);
+}
 
-})
-
-function handleNewPost() {
+function openNewBookForm() {
     if (mainContainer.classList.contains("hide"))
         return;
 
     removeMenu();
     mainContainer.classList.toggle("hide");
     formContainer.classList.toggle("hide");
-
-
-
 }
 
 function removeMenu() {
@@ -88,60 +125,13 @@ function handleScreenChange(mediaQuery) {
 mediaQuery.addEventListener('change', handleScreenChange);
 handleScreenChange(mediaQuery);
 
-// change to object at later date
-function newCard(newTitle, newDescription) {
-    const card = document.createElement("div");
-    card.classList.add("card", "flex");
+function renderLibrary() {
 
-    const cardDetails = document.createElement("div");
-    cardDetails.classList.add("card-details", "flex");
+    if (library.getSize() == 0)
+        return;
 
-    const cardTitle = document.createElement("div")
-    cardTitle.classList.add("card-title");
-    cardTitle.textContent = newTitle;
+    for(const [id, book] of library.map) {
+        cardsContainer.append(book.renderCard());
+    }
 
-    const cardDescription = document.createElement("div")
-    cardDescription.classList.add("card-description");
-    cardDescription.textContent = newDescription;
-
-    cardDetails.append(cardTitle, cardDescription);
-
-    const cardButtons = document.createElement("div")
-    cardButtons.classList.add("card-buttons", "flex");
-    
-    const cardButton1 = document.createElement("button");
-    cardButton1.classList.add("card-button", "card-icon");
-
-    const cardIcon1 = document.createElement("img");
-    cardIcon1.src = "/assets/icons/star-svgrepo-com.svg";
-    cardIcon1.alt = "favorite"
-    cardIcon1.classList.add("card-button-icon");
-
-    cardButton1.append(cardIcon1);
-
-    const cardButton2 = document.createElement("button");
-    cardButton2.classList.add("card-button", "card-icon");
-
-    const cardIcon2 = document.createElement("img");
-    cardIcon2.src = "/assets/icons/share-svgrepo-com.svg";
-    cardIcon2.alt = "share"
-    cardIcon2.classList.add("card-button-icon");
-
-    cardButton2.append(cardIcon2);
-
-    const cardButton3 = document.createElement("button");
-    cardButton3.classList.add("card-button", "card-icon");
-
-    const cardIcon3 = document.createElement("img");
-    cardIcon3.src = "/assets/icons/menu-dots-svgrepo-com.svg";
-    cardIcon3.alt = "card menu"
-    cardIcon3.classList.add("card-button-icon");
-
-    cardButton3.append(cardIcon3);
-
-    cardButtons.append(cardButton1, cardButton2, cardButton3);
-
-    card.append(cardDetails, cardButtons);
-
-    return card;
 }

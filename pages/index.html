@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Board</title>
     <link rel="stylesheet" href="/styles/style.css">
+    <script src="/scripts/book.js" defer></script>
+    <script src="/scripts/library.js" defer></script>
     <script src="/scripts/script.js" defer></script>
 </head>
 <body>
 
     <div class="container flex">
         <div class="menu flex hide">
-
             <button class = "icon-button" id="home">
                 <img src="/assets/icons/home-smile-svgrepo-com.svg" alt="home" class="icon">
                 <span class="button-description" >Home</span>
@@ -43,10 +44,10 @@
         </div>
 
         <header>
-            <div class="header-container grid">
+            <div class="header-container flex">
 
                 <div>
-                    <button class="menu-button" >
+                    <button class="menu-button flex" >
                         <img src="/assets/icons/hamburger-menu-svgrepo-com.svg" class ="icon" alt="menu button">
                     </button>
                 </div>
@@ -55,26 +56,17 @@
                     <img src="/assets/icons/magnifer-svgrepo-com.svg" class="icon" alt="search">
                     <input type="search" class="input">
                 </form>  
+                
+                <div class="action-buttons flex">
+                    <button id="new-button" class="action-button flex new-post-button" type="button">New</button>
+                </div>
+
 
                 <div class="user-info flex">
-                    <img src="/assets/icons/bell-svgrepo-com.svg" class="icon" alt="">
                     <img src="/assets/icons/user-circle-svgrepo-com.svg" class="icon" alt="user icon">
                     <span class="username">User Name</span>
                 </div>
 
-                <div class="welcome flex">
-                    <img src="/assets/icons/user-circle-svgrepo-com.svg" class="icon" alt="user icon">
-                    <div class="welcome-user">
-                        <div class="welcome-message">Hi there,</div>
-                        <div class="username">User name (@username)</div>
-                    </div>
-                </div>
-
-                <div class="action-buttons flex">
-                    <button id="new-button" class="action-button flex new-post-button" type="button">New</button>
-                    <button class="action-button flex" type="button">Upload</button>
-                    <button class="action-button flex" type="button">Share</button>
-                </div>
 
             </div>
         </header>
@@ -83,7 +75,7 @@
 
             <section class="cards-container grid">
 
-                <div class="card flex">
+                <div class="card flex" data-id="book-0">
 
                     <div class="card-details flex">
                         <div class="card-title">Project 1</div>
@@ -99,6 +91,7 @@
                     </div>
 
                     <div class="card-buttons flex">
+
                         <button class="card-button card-icon">
                             <img src="/assets/icons/star-svgrepo-com.svg" alt="favorite" class="card-button-icon">
                         </button>
@@ -110,310 +103,19 @@
                         <button class="card-button card-icon">
                             <img src="/assets/icons/menu-dots-svgrepo-com.svg" alt="card menu" class="card-button-icon">
                         </button>
-                    </div>
-                </div>
 
-                <div class="card flex">
-
-                    <div class="card-details flex">
-                        <div class="card-title">Project 1</div>
-                        <div class="card-description">Lorem ipsum dolor sit amet consectetur 
-                            adipisicing elit. Ut dicta expedita temporibus vero sequi excepturi 
-                            quidem placeat, ipsa esse error nostrum doloremque ducimus 
-                            laboriosam mollitia! Voluptates sint commodi ullam eligendi!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, 
-                            quae nesciunt nihil quidem temporibus quo quas consequuntur 
-                            consequatur natus quis mollitia assumenda. Magni id fugit commodi 
-                            ipsam quidem? Fugit, natus.
-                        </div>
-                    </div>
-
-                    <div class="card-buttons flex">
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/star-svgrepo-com.svg" alt="favorite" class="card-button-icon">
+                        <button class="card-button read-button" >
+                            <span id="read-button">Read</span>
                         </button>
 
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/share-svgrepo-com.svg" alt="share" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/menu-dots-svgrepo-com.svg" alt="card menu" class="card-button-icon">
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card flex">
-
-                    <div class="card-details flex">
-                        <div class="card-title">Project 1</div>
-                        <div class="card-description">Lorem ipsum dolor sit amet consectetur 
-                            adipisicing elit. Ut dicta expedita temporibus vero sequi excepturi 
-                            quidem placeat, ipsa esse error nostrum doloremque ducimus 
-                            laboriosam mollitia! Voluptates sint commodi ullam eligendi!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, 
-                            quae nesciunt nihil quidem temporibus quo quas consequuntur 
-                            consequatur natus quis mollitia assumenda. Magni id fugit commodi 
-                            ipsam quidem? Fugit, natus.
-                        </div>
-                    </div>
-
-                    <div class="card-buttons flex">
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/star-svgrepo-com.svg" alt="favorite" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/share-svgrepo-com.svg" alt="share" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/menu-dots-svgrepo-com.svg" alt="card menu" class="card-button-icon">
-                        </button>
-                    </div>
-                </div>
-
-                <div class="card flex">
-
-                    <div class="card-details flex">
-                        <div class="card-title">Project 1</div>
-                        <div class="card-description">Lorem ipsum dolor sit amet consectetur 
-                            adipisicing elit. Ut dicta expedita temporibus vero sequi excepturi 
-                            quidem placeat, ipsa esse error nostrum doloremque ducimus 
-                            laboriosam mollitia! Voluptates sint commodi ullam eligendi!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, 
-                            quae nesciunt nihil quidem temporibus quo quas consequuntur 
-                            consequatur natus quis mollitia assumenda. Magni id fugit commodi 
-                            ipsam quidem? Fugit, natus.
-                        </div>
-                    </div>
-
-                    <div class="card-buttons flex">
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/star-svgrepo-com.svg" alt="favorite" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/share-svgrepo-com.svg" alt="share" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/menu-dots-svgrepo-com.svg" alt="card menu" class="card-button-icon">
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="card flex">
-
-                    <div class="card-details flex">
-                        <div class="card-title">Project 1</div>
-                        <div class="card-description">Lorem ipsum dolor sit amet consectetur 
-                            adipisicing elit. Ut dicta expedita temporibus vero sequi excepturi 
-                            quidem placeat, ipsa esse error nostrum doloremque ducimus 
-                            laboriosam mollitia! Voluptates sint commodi ullam eligendi!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, 
-                            quae nesciunt nihil quidem temporibus quo quas consequuntur 
-                            consequatur natus quis mollitia assumenda. Magni id fugit commodi 
-                            ipsam quidem? Fugit, natus.
-                        </div>
-                    </div>
-
-                    <div class="card-buttons flex">
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/star-svgrepo-com.svg" alt="favorite" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/share-svgrepo-com.svg" alt="share" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/menu-dots-svgrepo-com.svg" alt="card menu" class="card-button-icon">
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="card flex">
-
-                    <div class="card-details flex">
-                        <div class="card-title">Project 1</div>
-                        <div class="card-description">Lorem ipsum dolor sit amet consectetur 
-                            adipisicing elit. Ut dicta expedita temporibus vero sequi excepturi 
-                            quidem placeat, ipsa esse error nostrum doloremque ducimus 
-                            laboriosam mollitia! Voluptates sint commodi ullam eligendi!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, 
-                            quae nesciunt nihil quidem temporibus quo quas consequuntur 
-                            consequatur natus quis mollitia assumenda. Magni id fugit commodi 
-                            ipsam quidem? Fugit, natus.
-                        </div>
-                    </div>
-
-                    <div class="card-buttons flex">
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/star-svgrepo-com.svg" alt="favorite" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/share-svgrepo-com.svg" alt="share" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/menu-dots-svgrepo-com.svg" alt="card menu" class="card-button-icon">
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="card flex">
-
-                    <div class="card-details flex">
-                        <div class="card-title">Project 1</div>
-                        <div class="card-description">Lorem ipsum dolor sit amet consectetur 
-                            adipisicing elit. Ut dicta expedita temporibus vero sequi excepturi 
-                            quidem placeat, ipsa esse error nostrum doloremque ducimus 
-                            laboriosam mollitia! Voluptates sint commodi ullam eligendi!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, 
-                            quae nesciunt nihil quidem temporibus quo quas consequuntur 
-                            consequatur natus quis mollitia assumenda. Magni id fugit commodi 
-                            ipsam quidem? Fugit, natus.
-                        </div>
-                    </div>
-
-                    <div class="card-buttons flex">
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/star-svgrepo-com.svg" alt="favorite" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/share-svgrepo-com.svg" alt="share" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/menu-dots-svgrepo-com.svg" alt="card menu" class="card-button-icon">
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="card flex">
-                    <div class="card-details flex">
-                        <div class="card-title">Project 1</div>
-                        <div class="card-description">Lorem ipsum dolor sit amet consectetur 
-                            adipisicing elit. Ut dicta expedita temporibus vero sequi excepturi 
-                            quidem placeat, ipsa esse error nostrum doloremque ducimus 
-                            laboriosam mollitia! Voluptates sint commodi ullam eligendi!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, 
-                            quae nesciunt nihil quidem temporibus quo quas consequuntur 
-                            consequatur natus quis mollitia assumenda. Magni id fugit commodi 
-                            ipsam quidem? Fugit, natus.
-                        </div>
-                    </div>
-
-                    <div class="card-buttons flex">
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/star-svgrepo-com.svg" alt="favorite" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/share-svgrepo-com.svg" alt="share" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/menu-dots-svgrepo-com.svg" alt="card menu" class="card-button-icon">
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="card flex">
-
-                    <div class="card-details flex">
-                        <div class="card-title">Project 1</div>
-                        <div class="card-description">Lorem ipsum dolor sit amet consectetur 
-                            adipisicing elit. Ut dicta expedita temporibus vero sequi excepturi 
-                            quidem placeat, ipsa esse error nostrum doloremque ducimus 
-                            laboriosam mollitia! Voluptates sint commodi ullam eligendi!
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, 
-                            quae nesciunt nihil quidem temporibus quo quas consequuntur 
-                            consequatur natus quis mollitia assumenda. Magni id fugit commodi 
-                            ipsam quidem? Fugit, natus.
-                        </div>
-                    </div>
-
-                    <div class="card-buttons flex">
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/star-svgrepo-com.svg" alt="favorite" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/share-svgrepo-com.svg" alt="share" class="card-button-icon">
-                        </button>
-
-                        <button class="card-button card-icon">
-                            <img src="/assets/icons/menu-dots-svgrepo-com.svg" alt="card menu" class="card-button-icon">
+                        <button class="card-button card-icon trash-button">
+                            <img src="/assets/icons/trash-bin-minimalistic-svgrepo-com.svg" alt="delete" class="card-button-icon">
                         </button>
                     </div>
                 </div>
                 
 
             </section>
-
-            <section class="misc grid">
-                <div class="announcements-container flex">
-                    <h1>Announcements</h1>
-                    <div class="announcements flex">
-                        <div class="announcement flex">
-                            <h3>Announcement1</h3>
-                            <p>
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta sapiente recusandae quisquam tempora necessitatibus perferendis, nostrum fugit accusamus. Dolor, incidunt autem quasi nostrum praesentium error consequuntur neque magni voluptatibus perferendis?
-                            </p>
-                        </div>
-                        <div class="announcement flex">
-                            <h3>Announcement1</h3>
-                            <p>
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta sapiente recusandae quisquam tempora necessitatibus perferendis, nostrum fugit accusamus. Dolor, incidunt autem quasi nostrum praesentium error consequuntur neque magni voluptatibus perferendis?
-                            </p>
-                        </div>
-                        <div class="announcement flex">
-                            <h3>Announcement1</h3>
-                            <p>
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Soluta sapiente recusandae quisquam tempora necessitatibus perferendis, nostrum fugit accusamus. Dolor, incidunt autem quasi nostrum praesentium error consequuntur neque magni voluptatibus perferendis?
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="trend-container flex">
-                    <h1>Trends</h1>
-                    <div class="trends">
-                        <div class="trend flex">
-                            <img src="/assets/icons/user-circle-svgrepo-com.svg" class ="icon" alt="user">
-                            <div class="trend-info flex">
-                                <div class="username">@username</div>
-                                <div class="project-name">Super Cool Project</div>
-                            </div>
-                        </div>
-                        <div class="trend flex">
-                            <img src="/assets/icons/user-circle-svgrepo-com.svg" class ="icon" alt="user">
-                            <div class="trend-info flex">
-                                <div class="username">@username</div>
-                                <div class="project-name">Super Cool Project</div>
-                            </div>
-                        </div>
-                        <div class="trend flex">
-                            <img src="/assets/icons/user-circle-svgrepo-com.svg" class ="icon" alt="user">
-                            <div class="trend-info flex">
-                                <div class="username">@username</div>
-                                <div class="project-name">Super Cool Project</div>
-                            </div>
-                        </div>
-                        <div class="trend flex">
-                            <img src="/assets/icons/user-circle-svgrepo-com.svg" class ="icon" alt="user">
-                            <div class="trend-info flex">
-                                <div class="username">@username</div>
-                                <div class="project-name">Super Cool Project</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>          
 
         </main>
 
